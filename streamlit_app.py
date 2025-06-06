@@ -8,6 +8,27 @@ st.write(
 )
 
 with st.sidebar:
+    st.header("🤖 Model Settings")
+    
+    model = st.selectbox(
+        "Search Model:",
+        [
+            "sonar-reasoning",
+            "sonar-reasoning-pro",
+            "sonar-deep-research",
+        ],
+        index=0,
+        help="Choose the Perplexity model for search",
+    )
+    
+    if model != "sonar-reasoning":
+        st.warning("⚠️ Due to cost considerations, only sonar-reasoning is available for now. If you want to try `sonar-reasoning-pro` or `sonar-deep-research`, please contact PHIL.")
+        model = "sonar-reasoning"
+    
+    st.info(f"🎯 Using: **{model}**")
+    
+    st.markdown("[📊 View Pricing](https://docs.perplexity.ai/guides/pricing)")
+    
     st.header("🎯 Domain Filtering")
     
     filter_type = st.radio(
@@ -70,7 +91,7 @@ if perplexity_api_key:
                 url = "https://api.perplexity.ai/chat/completions"
                 
                 payload = {
-                    "model": "llama-3.1-sonar-small-128k-online",
+                    "model": model,
                     "messages": [
                         {
                             "role": "system",
