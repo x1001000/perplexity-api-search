@@ -4,7 +4,7 @@ import requests
 st.title("🔍 Perplexity API Search")
 st.write(
     "This app uses Perplexity's API to search the web with domain filtering capabilities. "
-    "You can allowlist or blocklist specific domains to focus your search results."
+    "You can allowlist or denylist specific domains to focus your search results."
 )
 
 with st.sidebar:
@@ -33,8 +33,8 @@ with st.sidebar:
     
     filter_type = st.radio(
         "Filter Type:",
-        ["None", "Allowlist", "Blocklist"],
-        help="Allowlist: Only search these domains. Blocklist: Exclude these domains from search.",
+        ["None", "Allowlist", "Denylist"],
+        help="Allowlist: Only search these domains. Denylist: Exclude these domains from search.",
         index=1
     )
     
@@ -53,7 +53,7 @@ with st.sidebar:
                 st.warning("⚠️ Maximum 10 domains allowed. Only first 10 will be used.")
                 domains = domains[:10]
             
-            if filter_type == "Blocklist":
+            if filter_type == "Denylist":
                 domains = [f"-{domain}" for domain in domains]
             
             st.write(f"**Active domains ({len(domains)}):**")
