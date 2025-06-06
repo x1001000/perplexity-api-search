@@ -1,19 +1,46 @@
-# 💬 Chatbot template
+# 🔍 Perplexity API Search
 
-A simple Streamlit app that shows how to build a chatbot using OpenAI's GPT-3.5.
+A Streamlit app that provides web search functionality using Perplexity's API with advanced domain filtering capabilities.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
+## Features
 
-### How to run it on your own machine
+- **Web Search**: Search the web using Perplexity's powerful AI models
+- **Domain Filtering**: Filter search results by specific domains
+- **Allowlist Mode**: Search only within specified domains (up to 10)
+- **Blocklist Mode**: Exclude specific domains from search results
+- **Search History**: View and manage your previous searches
+- **Clean Interface**: Easy-to-use Streamlit interface
 
-1. Install the requirements
+## How to run it on your own machine
+
+1. Get a Perplexity API key from [here](https://www.perplexity.ai/settings/api)
+
+2. Install the requirements
 
    ```
    $ pip install -r requirements.txt
    ```
 
-2. Run the app
+3. Run the app
 
    ```
    $ streamlit run streamlit_app.py
    ```
+
+4. Enter your Perplexity API key in the app interface
+
+## Domain Filtering Usage
+
+### Allowlist (Search only these domains)
+- Enter domains like: `wikipedia.org`, `nasa.gov`, `space.com`
+- Results will only come from these sources
+
+### Blocklist (Exclude these domains)
+- Enter domains like: `pinterest.com`, `reddit.com`, `quora.com`  
+- Results will exclude these sources
+
+### Best Practices
+- Use simple domain names (e.g., `example.com`)
+- Avoid protocol prefixes like `https://` or `www.`
+- Maximum of 10 domains per filter
+- Main domains automatically cover subdomains
